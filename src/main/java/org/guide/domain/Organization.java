@@ -3,6 +3,7 @@ package org.guide.domain;
 import org.springframework.util.StringUtils;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.Set;
@@ -15,9 +16,11 @@ import java.util.UUID;
 @Entity
 @Table(name = "organization")
 public class Organization {
+    @Id
     private String id;
     private String name;
     private String url;
+    @OneToMany(mappedBy = "organization")
     private Set<Address> addresses;
 
     public Organization() {
@@ -58,7 +61,6 @@ public class Organization {
         return addresses;
     }
 
-    @OneToMany(mappedBy = "address")
     public void setAddresses(Set<Address> addresses) {
         this.addresses = addresses;
     }

@@ -16,24 +16,27 @@ public class Address {
 
     @Id
     private String id;
+    @ManyToOne
+    @JoinColumn(name = "organizationid", nullable = false)
     private Organization organization;
     private String street;
     private String city;
     private String state;
     private String zip;
+    @OneToMany(mappedBy = "address")
     private Set<Service> services;
 
     public Address() {
     }
 
-    public Address(String id, Organization organization, String street, String city, String state, String zip) {
-        this.id = id;
-        this.organization = organization;
-        this.street = street;
-        this.city = city;
-        this.state = state;
-        this.zip = zip;
-    }
+//    public Address(String id, Organization organization, String street, String city, String state, String zip) {
+//        this.id = id;
+//        this.organization = organization;
+//        this.street = street;
+//        this.city = city;
+//        this.state = state;
+//        this.zip = zip;
+//    }
 
     public String getId() {
         return id;
@@ -43,8 +46,6 @@ public class Address {
         this.id = id;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "organizationid", nullable = false)
     public Organization getOrganization() {
         return organization;
     }
@@ -85,7 +86,6 @@ public class Address {
         this.zip = zip;
     }
 
-    @OneToMany(mappedBy = "service")
     public Set<Service> getServices() {
         return services;
     }
