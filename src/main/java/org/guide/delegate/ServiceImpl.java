@@ -47,8 +47,20 @@ public class ServiceImpl implements ServiceDelegate {
             }
         }
 
+        List<Category> categories = categoryRepository.findAll();
+
         return services.stream()
-                .map(service -> new SearchResult(service))
+                .map(service -> {
+                    Optional<Category> c = categories.stream()
+                            .filter(x -> service.getCategoryId().equals(x.getId()))
+                            .findFirst();
+                    if (c.isPresent()) {
+                        return new SearchResult(service, c.get());
+                    } else  {
+                        return new SearchResult(service, null);
+                    }
+                    
+                })
                 .collect(Collectors.toList());
     }
 
