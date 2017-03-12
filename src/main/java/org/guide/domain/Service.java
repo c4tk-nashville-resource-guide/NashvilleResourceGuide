@@ -16,8 +16,11 @@ public class Service {
     private String id;
     private String hours;
     private String notes;
+    @ManyToOne
+    @JoinColumn( name = "addressid", nullable = false )
     private Address address;
-    private Category category;
+    @Column(name = "categoryid")
+    private String categoryId;
 
     public Service() {
     }
@@ -46,8 +49,6 @@ public class Service {
         this.notes = notes;
     }
 
-    @ManyToOne
-    @JoinColumn( name = "addressid", nullable = false )
     public Address getAddress() {
         return address;
     }
@@ -56,14 +57,11 @@ public class Service {
         this.address = address;
     }
 
-    @ManyToOne
-    @JoinColumn ( name = "categoryid", nullable = false )
-    public Category getCategory() {
-        return category;
+    public String getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategoryId(String categoryId) {
+        this.categoryId = categoryId;
     }
-
 }
