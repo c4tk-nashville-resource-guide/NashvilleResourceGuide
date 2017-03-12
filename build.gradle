@@ -11,7 +11,6 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
-
 jar {
     baseName = 'nashville-resource-guide'
     version =  '1.0.0'
@@ -25,8 +24,13 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
-    compile "org.springframework.boot:spring-boot-starter-web"
-    compile "org.springframework.boot:spring-boot-starter-actuator"
+    compile "org.springframework.boot:spring-boot-starter-web:1.3.0.RELEASE"
+    compile "org.springframework.boot:spring-boot-starter-actuator:1.3.0.RELEASE"
+
+    // database stuff
+    compile "com.heroku.sdk:heroku-jdbc:0.1.1"
+    compile "org.postgresql:postgresql:9.4-1201-jdbc4"
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+
     compile "org.apache.commons:commons-lang3:3.5"
-//    testCompile('org.springframework.boot:spring-boot-starter-test')
 }
