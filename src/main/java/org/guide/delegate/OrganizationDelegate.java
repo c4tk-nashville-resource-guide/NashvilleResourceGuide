@@ -14,5 +14,5 @@ public interface OrganizationDelegate {
     List<Address> getAddresses(String organizationId);
     void createOrganization(Organization organization);
     void createAddress(String organizationId, Address address);
-    void updateAddress(String organizationId, Address address);
+//    void updateAddress(String organizationId, Address address);
 }

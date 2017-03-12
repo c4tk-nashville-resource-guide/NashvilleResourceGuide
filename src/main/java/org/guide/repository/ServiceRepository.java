@@ -10,6 +10,8 @@ import java.util.List;
  */
 public interface ServiceRepository extends JpaRepository<Service, String> {
 
+    List<Service> findByAddressZip(String zip);
+    List<Service> findByCategoryId(String categoryId);
     List<Service> findByAddressZipAndCategoryId(String zip, String categoryId);
 
 }
