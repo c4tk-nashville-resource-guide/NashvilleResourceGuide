@@ -1,8 +1,10 @@
 package org.guide.domain;
 
 import org.hibernate.annotations.ManyToAny;
+import org.springframework.util.StringUtils;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 /**
  * Created by MaryBeth on 3/11/17.
@@ -63,5 +65,18 @@ public class Service {
 
     public void setCategoryId(String categoryId) {
         this.categoryId = categoryId;
+    }
+
+    public boolean validate() {
+        if (StringUtils.isEmpty(id)) {
+            id = UUID.randomUUID().toString();
+        }
+        if (StringUtils.isEmpty(address)) {
+            return false;
+        }
+        if (StringUtils.isEmpty(categoryId)) {
+            return false;
+        }
+        return true;
     }
 }
