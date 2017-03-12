@@ -3,6 +3,7 @@ package org.guide.domain;
 import org.springframework.util.StringUtils;
 
 import javax.persistence.*;
+import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.UUID;
 
@@ -87,10 +88,16 @@ public class Address {
     }
 
     public Set<Service> getServices() {
+        if ( services == null) {
+            services = new LinkedHashSet<>();
+        }
         return services;
     }
 
     public void setServices(Set<Service> services) {
+        if ( services == null) {
+            services = new LinkedHashSet<>();
+        }
         this.services = services;
     }
 
