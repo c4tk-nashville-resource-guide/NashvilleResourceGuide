@@ -2,12 +2,18 @@ package org.guide.domain;
 
 import org.springframework.util.StringUtils;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.UUID;
 
 /**
  * Created by rgdavis on 3/11/17.
  */
+@Entity
+@Table(name = "category")
 public class Category {
+    @Id
     private String id;
     private String name;
     private int count;
