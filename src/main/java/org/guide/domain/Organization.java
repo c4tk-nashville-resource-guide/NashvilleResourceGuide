@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.UUID;
 
@@ -56,7 +57,9 @@ public class Organization {
     }
 
     public Set<Address> getAddresses() {
-
+        if ( addresses == null) {
+            addresses = new LinkedHashSet<>();
+        }
 
         return addresses;
     }

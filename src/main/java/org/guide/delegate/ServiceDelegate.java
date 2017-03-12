@@ -1,5 +1,7 @@
 package org.guide.delegate;
 
+import org.guide.domain.ContributorRecord;
+import org.guide.domain.SearchResult;
 import org.guide.domain.Service;
 
 import java.util.List;
@@ -9,5 +11,6 @@ import java.util.List;
  */
 public interface ServiceDelegate {
 
-    List<Service> findService(String serviceId, String zip);
+    List<SearchResult> findService(String serviceId, String zip);
+    void loadRecord(ContributorRecord record);
 }
